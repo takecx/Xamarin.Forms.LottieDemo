@@ -3,6 +3,8 @@ using Prism;
 using Prism.Ioc;
 using UIKit;
 
+// Lottie用に追加
+using Lottie.Forms.iOS.Renderers;
 
 namespace Xamarin.Forms.LottieDemo.iOS
 {
@@ -23,6 +25,9 @@ namespace Xamarin.Forms.LottieDemo.iOS
 		{
 			global::Xamarin.Forms.Forms.Init();
 			LoadApplication(new App(new iOSInitializer()));
+
+			// Lottie用に追加
+			AnimationViewRenderer.Init();
 
 			return base.FinishedLaunching(app, options);
 		}

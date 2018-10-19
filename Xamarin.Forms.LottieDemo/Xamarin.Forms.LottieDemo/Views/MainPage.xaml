@@ -1,6 +1,14 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="Xamarin.Forms.LottieDemo.Views.MainPage" Title="{Binding Title}">
-	<StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
-		<Label Text="Welcome to Xamarin Forms and Prism!" />
+<?xml version="1.0" encoding="utf-8"?>
+<ContentPage xmlns:forms="clr-namespace:Lottie.Forms;assembly=Lottie.Forms" xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:local="clr-namespace:Xamarin.Forms.LottieDemo" x:Class="Xamarin.Forms.LottieDemo.Views.MainPage" Title="{Binding Title}">
+	<StackLayout>
+		<forms:AnimationView x:Name="animationView" Progress="{Binding progress,Mode=TwoWay,UpdateSourceEventName=PropertyChanged}" Grid.Row="1" Animation="faceid_green.json" Loop="false" AutoPlay="false" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+			<forms:AnimationView.Triggers>
+				<EventTrigger Event="OnClick">
+					<local:LottieAnimationViewAnimation Duration="100000"/>
+				</EventTrigger>
+			</forms:AnimationView.Triggers>
+		</forms:AnimationView>
+		<Slider ValueChanged="Handle_ValueChanged" Value="{Binding progress,Mode=TwoWay,UpdateSourceEventName=PropertyChanged}"/>
+		<Button x:Name="button" Text="animate" Clicked="Handle_Clicked"/>
 	</StackLayout>
 </ContentPage>
